@@ -1,12 +1,5 @@
 #!/usr/bin/env node
 
-import { getRandomNumber, playGame } from '../src/index.js';
+import playEvenGame from '../src/games/even.js';
 
-const isEven = (number) => number % 2 === 0;
-
-const getCorrectAnswer = (number) => (isEven(number) ? 'yes' : 'no');
-
-const question = getRandomNumber(1, 100);
-const correctAnswer = getCorrectAnswer(question);
-
-playGame(question, correctAnswer);
+playEvenGame();
