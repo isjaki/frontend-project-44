@@ -1,8 +1,6 @@
 import { playGame, getRandomNumber } from '../index.js';
 
-const OPERATIONS = ['+', '-', '*'];
-
-const getCorrectAnswer = (a, b, operation) => {
+const calculate = (a, b, operation) => {
   switch (operation) {
     case '+':
       return a + b;
@@ -15,18 +13,27 @@ const getCorrectAnswer = (a, b, operation) => {
   }
 };
 
-const prepareGameData = () => {
-  const a = getRandomNumber(1, 100);
-  const b = getRandomNumber(1, 100);
+const getRandomOperation = () => {
+  const OPERATIONS = ['+', '-', '*'];
   const operationIndex = getRandomNumber(0, OPERATIONS.length - 1);
-  const operation = OPERATIONS[operationIndex];
-
-  const question = `${a} ${operation} ${b}`;
-  const correctAnswer = getCorrectAnswer(a, b, operation);
-
-  return [question, correctAnswer];
+  return OPERATIONS[operationIndex];
 };
 
-const playCalcGame = () => playGame(prepareGameData);
+const getQuestion = () => {
+  const a = getRandomNumber(1, 100);
+  const b = getRandomNumber(1, 100);
+
+  const operation = getRandomOperation();
+
+  return `${a} ${operation} ${b}`;
+};
+
+const getCorrectAnswer = (question) => {
+  const [a, operation, b] = question.split(' ');
+
+  return calculate(a, b, operation);
+};
+
+const playCalcGame = () => playGame(getQuestion, getCorrectAnswer);
 
 export default playCalcGame;
