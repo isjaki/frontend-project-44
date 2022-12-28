@@ -3,7 +3,7 @@ import { playGame, getRandomNumber } from '../index.js';
 const calculate = (a, b, operation) => {
   switch (operation) {
     case '+':
-      return a + b;
+      return Number(a) + Number(b);
     case '-':
       return a - b;
     case '*':
