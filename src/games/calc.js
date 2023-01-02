@@ -1,5 +1,7 @@
 import { playGame, getRandomNumber } from '../index.js';
 
+const GAME_TEXT = 'What is the result of the expression?';
+
 const calculate = (a, b, operation) => {
   switch (operation) {
     case '+':
@@ -34,6 +36,6 @@ const getCorrectAnswer = (question) => {
   return calculate(a, b, operation);
 };
 
-const playCalcGame = () => playGame(getQuestion, getCorrectAnswer);
+const playCalcGame = () => playGame(GAME_TEXT, getQuestion, getCorrectAnswer);
 
 export default playCalcGame;
