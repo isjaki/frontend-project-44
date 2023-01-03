@@ -4,7 +4,7 @@ const ROUNDS_COUNT = 3;
 
 export const getRandomNumber = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
 
-export function playGame(gameText, getQuestion, getCorrectAnswer) {
+export function playGame(gameText, prepareGameData) {
   console.log('Welcome to the Brain Games!');
 
   const userName = readlineSync.question('May I have your name? ');
@@ -13,8 +13,7 @@ export function playGame(gameText, getQuestion, getCorrectAnswer) {
   console.log(gameText);
 
   for (let i = 0; i < ROUNDS_COUNT; i += 1) {
-    const question = getQuestion();
-    const correctAnswer = getCorrectAnswer(question);
+    const [question, correctAnswer] = prepareGameData();
 
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');

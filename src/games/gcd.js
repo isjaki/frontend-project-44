@@ -17,19 +17,16 @@ const getGcd = (a, b) => {
   return currentA;
 };
 
-const getQuestion = () => {
+const prepareGameData = () => {
   const a = getRandomNumber(1, 100);
   const b = getRandomNumber(1, 100);
 
-  return `${a} ${b}`;
+  const question = `${a} ${b}`;
+  const correctAnswer = getGcd(a, b);
+
+  return [question, correctAnswer];
 };
 
-const getCorrectAnswer = (question) => {
-  const [a, b] = question.split(' ');
-
-  return getGcd(a, b);
-};
-
-const playGcdGame = () => playGame(GAME_TEXT, getQuestion, getCorrectAnswer);
+const playGcdGame = () => playGame(GAME_TEXT, prepareGameData);
 
 export default playGcdGame;

@@ -21,21 +21,18 @@ const getRandomOperation = () => {
   return OPERATIONS[operationIndex];
 };
 
-const getQuestion = () => {
+const prepareGameData = () => {
   const a = getRandomNumber(1, 100);
   const b = getRandomNumber(1, 100);
 
   const operation = getRandomOperation();
 
-  return `${a} ${operation} ${b}`;
+  const question = `${a} ${operation} ${b}`;
+  const correctAnswer = calculate(a, b, operation);
+
+  return [question, correctAnswer];
 };
 
-const getCorrectAnswer = (question) => {
-  const [a, operation, b] = question.split(' ');
-
-  return calculate(a, b, operation);
-};
-
-const playCalcGame = () => playGame(GAME_TEXT, getQuestion, getCorrectAnswer);
+const playCalcGame = () => playGame(GAME_TEXT, prepareGameData);
 
 export default playCalcGame;
